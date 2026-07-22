@@ -4,6 +4,7 @@ public class InteractableObject : MonoBehaviour
 {
     public void OnClick(NavMeshAgent playerAgent)
     {
+        playerAgent.stoppingDistance=2;
         playerAgent.SetDestination(transform.position);  
 
         Interact();

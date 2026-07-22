@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(hit.collider.CompareTag("Ground"))
                 {
+                    playerAgent.stoppingDistance=0;
                     playerAgent.SetDestination(hit.point);  
                 }
                 else if(hit.collider.CompareTag("Interactable"))
