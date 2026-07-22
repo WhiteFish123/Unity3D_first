@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     private NavMeshAgent playerAgent;
@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))//当按下鼠标左键的时候
+        if(Input.GetMouseButtonDown(0)&&EventSystem.current.IsPointerOverGameObject()==false)//当按下鼠标左键的时候
         {
             Ray ray=Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
