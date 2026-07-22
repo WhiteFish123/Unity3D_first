@@ -21,7 +21,14 @@ public class PlayerController : MonoBehaviour
             bool isCollide=Physics.Raycast(ray,out hit);//判断是否碰撞到物体
             if(isCollide)
             {
-                playerAgent.SetDestination(hit.point);
+                if(hit.collider.CompareTag("Ground"))
+                {
+                    playerAgent.SetDestination(hit.point);  
+                }
+                else if(hit.collider.CompareTag("Interactable"))
+                {
+                    hit.collider.GetComponent<InteractableObject>().OnClick(playerAgent);//获取交互脚本，调用Onclick方法
+                }
             }
         }
         
