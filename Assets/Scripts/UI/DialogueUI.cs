@@ -8,8 +8,8 @@ public class DialogueUI : MonoBehaviour
     private TextMeshProUGUI nameText;
     private TextMeshProUGUI contentText;
     private Button continueButton;
-    private int dialogueIndex=-1;
-    public List<string>contentList=new List<string>();
+    private int dialogueIndex=0;
+    public List<string>contentList;
     void Awake()
     {
         if(Instance!=null && Instance!=this)
