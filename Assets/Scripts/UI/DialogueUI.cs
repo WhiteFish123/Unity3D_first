@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 public class DialogueUI : MonoBehaviour
 {
+    public static DialogueUI DialogueUI_Instance;
     private TextMeshProUGUI nameText;
     private TextMeshProUGUI contentText;
     private Button continueButton;
@@ -12,10 +13,12 @@ public class DialogueUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        DialogueUI_Instance=this;
         nameText=transform.Find("Name").GetComponent<TextMeshProUGUI>();
         contentText=transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
         continueButton=transform.Find("ContinueButton").GetComponent<Button>();
         continueButton.onClick.AddListener(this.OnContinueButtonClick);
+        Hide();
     }
 
     // Update is called once per frame
@@ -23,16 +26,18 @@ public class DialogueUI : MonoBehaviour
     {
         
     }
-    private void Show()
+    public void Show()
     {
         gameObject.SetActive(true);
     }
-    private void Show(string name,List<string>content)
+    public void Show(string name,List<string>content)
     {
         nameText.text=name;
         contentList=new List<string>();//清空之前的内容
+        dialogueIndex=0;
         contentList.AddRange(content);//添加新的内容
         contentText.text=contentList[0];//显示第一条内容
+        Show();
 
     }
     private void Hide()
