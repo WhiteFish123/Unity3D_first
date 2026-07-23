@@ -12,6 +12,11 @@ public class DialogueUI : MonoBehaviour
     public List<string>contentList=new List<string>();
     void Awake()
     {
+        if(Instance!=null && Instance!=this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         Instance=this;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
