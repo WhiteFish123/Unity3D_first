@@ -4,16 +4,19 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 public class DialogueUI : MonoBehaviour
 {
-    public static DialogueUI DialogueUI_Instance;
+    public static DialogueUI Instance{ get; private set; }
     private TextMeshProUGUI nameText;
     private TextMeshProUGUI contentText;
     private Button continueButton;
     private int dialogueIndex=-1;
     public List<string>contentList=new List<string>();
+    void Awake()
+    {
+        Instance=this;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DialogueUI_Instance=this;
         nameText=transform.Find("Name").GetComponent<TextMeshProUGUI>();
         contentText=transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
         continueButton=transform.Find("ContinueButton").GetComponent<Button>();
