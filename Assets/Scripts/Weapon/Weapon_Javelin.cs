@@ -1,16 +1,12 @@
 using UnityEngine;
-
-public class Weapon_Javelin : MonoBehaviour
+using System.Collections.Generic;
+public class Weapon_Javelin :Weapon
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public float bulletSpeed=10;
+    public GameObject bulletPrefab;
+    public override void Attack()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameObject bulletGo=GameObject.Instantiate(bulletPrefab,transform.position,transform.rotation);
+        bulletGo.GetComponent<Rigidbody>().linearVelocity=transform.forward*bulletSpeed;
     }
 }
