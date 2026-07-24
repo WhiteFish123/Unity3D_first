@@ -4,6 +4,7 @@ using System.Collections.Generic;
 [CreateAssetMenu]
 public class ItemScriptObject : ScriptableObject
 {
+    public int id;
     public string itemName;
     public ItemType itemType;
     public string description;

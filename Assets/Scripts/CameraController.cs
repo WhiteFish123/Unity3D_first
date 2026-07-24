@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
 
     void Start()//初始化计算相机位置和玩家位置的偏移量
     {
-        playerTransform=GameObject.FindGameObjectWithTag("Player").transform;//通过Tag获取玩家对象的Transform组件
+        playerTransform=GameObject.FindGameObjectWithTag(Tag.Player).transform;//通过Tag获取玩家对象的Transform组件
         offset=transform.position-playerTransform.position;
     }
 

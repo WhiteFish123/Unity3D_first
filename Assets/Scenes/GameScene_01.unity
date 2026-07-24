@@ -6988,14 +6988,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon_Javelin
       objectReference: {fileID: 0}
-    - target: {fileID: 5589202228300071836, guid: a766f4e643c369743a4bf614f417eac0, type: 3}
-      propertyPath: bulletSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5589202228300071836, guid: a766f4e643c369743a4bf614f417eac0, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 9091301451250312871, guid: 4b2e306fbdeb11b4588252a342f19911, type: 3}
     - target: {fileID: 8563753330317095493, guid: a766f4e643c369743a4bf614f417eac0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7036,11 +7028,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2232669003458804378, guid: a766f4e643c369743a4bf614f417eac0, type: 3}
-    m_RemovedGameObjects:
-    - {fileID: 2734039641233792047, guid: a766f4e643c369743a4bf614f417eac0, type: 3}
-    - {fileID: 3803749903909794898, guid: a766f4e643c369743a4bf614f417eac0, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a766f4e643c369743a4bf614f417eac0, type: 3}
@@ -7100,10 +7089,6 @@ PrefabInstance:
     - target: {fileID: 4641204477731575974, guid: e19da1620154b8649a4771d76225dd51, type: 3}
       propertyPath: m_Name
       value: Weapon_Scythe
-      objectReference: {fileID: 0}
-    - target: {fileID: 4641204477731575974, guid: e19da1620154b8649a4771d76225dd51, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

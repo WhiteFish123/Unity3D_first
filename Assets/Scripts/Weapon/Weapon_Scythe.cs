@@ -15,7 +15,7 @@ public class Weapon_Scythe : Weapon
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Enemy"))
+        if(other.CompareTag(Tag.Enemy))
         {
             Debug.Log("Hit enemy with scythe, damage: " + attackValue);
         }
