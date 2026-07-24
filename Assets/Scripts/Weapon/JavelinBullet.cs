@@ -11,7 +11,7 @@ public class JavelinBullet : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
     }
-    private void OnColliderEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
@@ -22,6 +22,6 @@ public class JavelinBullet : MonoBehaviour
         rb.isKinematic = true;
         col.enabled = false;
 
-        Destroy(gameObject, 1f);
+        Destroy(this.gameObject, 1f);
     }
 }
