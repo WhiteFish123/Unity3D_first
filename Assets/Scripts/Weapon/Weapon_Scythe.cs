@@ -8,13 +8,7 @@ public class Weapon_Scythe : Weapon
     {
         anim = GetComponent<Animator>();
     }
-    // void Update()
-    // {
-    //     if(Input.GetKeyDown(KeyCode.Space))
-    //     {
-    //         Attack();
-    //     }
-    // }
+    
     override public void Attack()
     {
         anim.SetTrigger(ANIM_ATTACK_TRIGGER);
