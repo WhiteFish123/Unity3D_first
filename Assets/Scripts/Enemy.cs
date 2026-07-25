@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
             int count=Random.Range(0,4);
             for(int i=0;i<count;i++)
             {
-                ItemScriptObject item=ItemDB_Manager.instance.GetRandomItem();
+                ItemScriptObject item=ItemDB_Manager.instance.GetRandomItem();//随机生成物品
 
                 GameObject go = Instantiate(item.itemPrefab,transform.position,Quaternion.identity);
                 Animator anim=go.GetComponent<Animator>();
@@ -76,6 +76,8 @@ public class Enemy : MonoBehaviour
                 {
                     anim.enabled=false;
                 }
+                PickableObject po = go.AddComponent<PickableObject>();//挂载PickableObject脚本，后续通过接触对象是否挂载该脚本来实现拾取功能
+                po.itemSO=item;//记录这个捡起的物品类型
             }
 
             Destroy(this.gameObject);
