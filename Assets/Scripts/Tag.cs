@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Tag
 {
-    public const string Player = "Player";
-    public const string Enemy = "Enemy";
+    public const string PLAYER = "Player";
+    public const string ENEMY = "Enemy";
+    public const string INTERACTABLE = "Interactable";
 }

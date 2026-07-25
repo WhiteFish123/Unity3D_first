@@ -69,7 +69,13 @@ public class Enemy : MonoBehaviour
             {
                 ItemScriptObject item=ItemDB_Manager.instance.GetRandomItem();
 
-                Instantiate(item.itemPrefab,transform.position,Quaternion.identity);
+                GameObject go = Instantiate(item.itemPrefab,transform.position,Quaternion.identity);
+                Animator anim=go.GetComponent<Animator>();
+                go.tag=Tag.INTERACTABLE;
+                if(anim!=null)
+                {
+                    anim.enabled=false;
+                }
             }
 
             Destroy(this.gameObject);

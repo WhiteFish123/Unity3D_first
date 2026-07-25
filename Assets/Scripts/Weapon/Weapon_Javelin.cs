@@ -31,5 +31,9 @@ public class Weapon_Javelin :Weapon
         bulletGo=GameObject.Instantiate(bulletPrefab,transform.position,transform.rotation);
         bulletGo.transform.SetParent(transform);
         bulletGo.GetComponent<Collider>().enabled=false;
+        if(tag==Tag.INTERACTABLE)
+        {
+            Destroy(bulletGo.GetComponent<JavelinBullet>());
+        }
     }
 }
