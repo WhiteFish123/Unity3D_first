@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Weapon_Scythe
   m_EditorClassIdentifier: 
   id: 4
-  itemName: "\u8611\u83C7"
-  itemType: 1
-  description: "\u9A6C\u91CC\u5965\u7684\u8611\u83C7\uFF0C\u4F46\u662F\u4E0D\u4F1A\u53D8\u5927"
+  itemName: "\u6B7B\u795E\u4E4B\u9570"
+  itemType: 0
+  description: "\u6536\u4F60\u6765\u5566"
   itemProperties:
-  - propertyName: 0
+  - propertyName: 4
     propertyValue: 30
-  itemIcon: {fileID: 0}
-  itemPrefab: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 8afb3007b48996b43ac79e243760f49c, type: 3}
+  itemPrefab: {fileID: 4641204477731575974, guid: e19da1620154b8649a4771d76225dd51, type: 3}
