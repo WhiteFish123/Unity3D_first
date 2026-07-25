@@ -3,5 +3,5 @@ using System.Collections.Generic;
 [CreateAssetMenu]
 public class ItemDB_SO : ScriptableObject
 {
-    public List<ItemScriptObject> itemScriptObjects;
+    public List<ItemScriptObject> itemScriptObjects_List;
 }

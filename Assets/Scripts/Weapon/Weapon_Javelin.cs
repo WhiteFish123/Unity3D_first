@@ -12,9 +12,9 @@ public class Weapon_Javelin :Weapon
     }
     public override void Attack()
     {
-        bulletGo.GetComponent<Collider>().enabled=true;
         if(bulletGo!=null)
         {
+            bulletGo.GetComponent<Collider>().enabled=true;
             bulletGo.transform.SetParent(null);
             bulletGo.GetComponent<Rigidbody>().linearVelocity=transform.forward*bulletSpeed;
             bulletGo=null;
