@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
             int count=Random.Range(0,4);
             for(int i=0;i<count;i++)
             {
-                ItemScriptObject item=ItemDB_Manager.instance.GetRandomItem();//随机生成物品
+                ItemSO item=ItemDB_Manager.instance.GetRandomItem();//随机生成物品
 
                 GameObject go = Instantiate(item.itemPrefab,transform.position,Quaternion.identity);
                 Animator anim=go.GetComponent<Animator>();

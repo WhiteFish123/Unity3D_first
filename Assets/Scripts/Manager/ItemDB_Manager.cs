@@ -15,9 +15,9 @@ public class ItemDB_Manager : MonoBehaviour
         instance=this;
     }
 
-    public ItemScriptObject GetRandomItem()
+    public ItemSO GetRandomItem()
     {
-        int RandomIndex=Random.Range(0,itemDB.itemScriptObjects_List.Count);
-        return itemDB.itemScriptObjects_List[RandomIndex];
+        int RandomIndex=Random.Range(0,itemDB.ItemSO_List.Count);
+        return itemDB.ItemSO_List[RandomIndex];
     }   
 }
