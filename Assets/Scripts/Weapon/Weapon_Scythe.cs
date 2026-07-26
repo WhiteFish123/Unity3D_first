@@ -4,6 +4,8 @@ public class Weapon_Scythe : Weapon
 {
     public const string ANIM_ATTACK_TRIGGER = "isAttack";
     private Animator anim;
+
+    public int atkValue=30;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -17,7 +19,7 @@ public class Weapon_Scythe : Weapon
     {
         if(other.CompareTag(Tag.ENEMY))
         {
-            Debug.Log("Hit enemy with scythe, damage: " + attackValue);
+            other.GetComponent<Enemy>().TakeDamage(atkValue);
         }
     }
 }

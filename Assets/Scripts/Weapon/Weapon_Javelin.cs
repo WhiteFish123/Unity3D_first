@@ -42,7 +42,7 @@ public class Weapon_Javelin :Weapon
             po.itemSO=GetComponent<PickableObject>().itemSO;
             Rigidbody rb=bulletGo.GetComponent<Rigidbody>();
 
-            rb.constraints = ~RigidbodyConstraints.FreezePositionY;
+            rb.constraints = ~RigidbodyConstraints.FreezeAll;
             bulletGo.GetComponent<Collider>().enabled=true;
             bulletGo.transform.parent=null;
             Destroy(this.gameObject);
