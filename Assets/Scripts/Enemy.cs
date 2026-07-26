@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
         if(HP<=0)
         {
             GetComponent<Collider>().enabled=false;
-            int count=Random.Range(0,4);
+            int count=Random.Range(2,4);
             for(int i=0;i<count;i++)
             {
                 SpawnPickableItem();

@@ -14,23 +14,25 @@ public class Weapon_Javelin :Weapon
     {
         if(bulletGo!=null)
         {
-            bulletGo.GetComponent<Collider>().enabled=true;
             bulletGo.transform.SetParent(null);
             bulletGo.GetComponent<Rigidbody>().linearVelocity=transform.forward*bulletSpeed;
+            bulletGo.GetComponent<Collider>().enabled=true;
+            Destroy(bulletGo, 10f);
             bulletGo=null;
+            Invoke("SpawnBullet",0.5f);
         }
         else
         {
             return;
         }
-        Invoke("SpawnBullet",0.5f);
+        
     }
 
     private void SpawnBullet()
     {
         bulletGo=GameObject.Instantiate(bulletPrefab,transform.position,transform.rotation);
         bulletGo.transform.SetParent(transform);
-        //bulletGo.GetComponent<Collider>().enabled=false;
+        bulletGo.GetComponent<Collider>().enabled=false;
         if(tag==Tag.INTERACTABLE)
         {
             Destroy(bulletGo.GetComponent<JavelinBullet>());
@@ -41,6 +43,9 @@ public class Weapon_Javelin :Weapon
             Rigidbody rb=bulletGo.GetComponent<Rigidbody>();
 
             rb.constraints = ~RigidbodyConstraints.FreezePositionY;
+            bulletGo.GetComponent<Collider>().enabled=true;
+            bulletGo.transform.parent=null;
+            Destroy(this.gameObject);
         }
     }
 }

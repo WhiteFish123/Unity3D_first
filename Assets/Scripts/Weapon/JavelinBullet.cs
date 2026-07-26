@@ -10,7 +10,6 @@ public class JavelinBullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
-        Destroy(this.gameObject, 10f);
     }
     private void OnCollisionEnter(Collision collision)
     {
