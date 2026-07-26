@@ -5,11 +5,12 @@ public class JavelinBullet : MonoBehaviour
 {
     private Rigidbody rb;
     private Collider col;
-
+    public int atkValue=30;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
+        Destroy(this.gameObject, 10f);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -22,6 +23,12 @@ public class JavelinBullet : MonoBehaviour
         rb.isKinematic = true;
         col.enabled = false;
 
-        Destroy(this.gameObject, 1f);
+        transform.parent=collision.gameObject.transform;
+        Destroy(this.gameObject, 2f);
+
+        if(collision.gameObject.CompareTag(Tag.ENEMY))
+        {
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(atkValue);
+        }
     }
 }
