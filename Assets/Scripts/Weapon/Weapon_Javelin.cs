@@ -30,10 +30,17 @@ public class Weapon_Javelin :Weapon
     {
         bulletGo=GameObject.Instantiate(bulletPrefab,transform.position,transform.rotation);
         bulletGo.transform.SetParent(transform);
-        bulletGo.GetComponent<Collider>().enabled=false;
+        //bulletGo.GetComponent<Collider>().enabled=false;
         if(tag==Tag.INTERACTABLE)
         {
             Destroy(bulletGo.GetComponent<JavelinBullet>());
+
+            bulletGo.tag=Tag.INTERACTABLE;
+            PickableObject po = bulletGo.AddComponent<PickableObject>();//挂载PickableObject脚本，后续通过接触对象是否挂载该脚本来实现拾取功能
+            po.itemSO=GetComponent<PickableObject>().itemSO;
+            Rigidbody rb=bulletGo.GetComponent<Rigidbody>();
+
+            rb.constraints = ~RigidbodyConstraints.FreezePositionY;
         }
     }
 }

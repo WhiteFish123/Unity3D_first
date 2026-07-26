@@ -67,20 +67,38 @@ public class Enemy : MonoBehaviour
             int count=Random.Range(0,4);
             for(int i=0;i<count;i++)
             {
-                ItemSO item=ItemDB_Manager.instance.GetRandomItem();//随机生成物品
-
-                GameObject go = Instantiate(item.itemPrefab,transform.position,Quaternion.identity);
-                Animator anim=go.GetComponent<Animator>();
-                go.tag=Tag.INTERACTABLE;
-                if(anim!=null)
-                {
-                    anim.enabled=false;
-                }
-                PickableObject po = go.AddComponent<PickableObject>();//挂载PickableObject脚本，后续通过接触对象是否挂载该脚本来实现拾取功能
-                po.itemSO=item;//记录这个捡起的物品类型
+                SpawnPickableItem();
             }
 
             Destroy(this.gameObject);
+        }
+    }
+    private void SpawnPickableItem()
+    {
+        ItemSO item=ItemDB_Manager.instance.GetRandomItem();//随机生成物品
+
+        GameObject go = Instantiate(item.itemPrefab,transform.position,Quaternion.identity);
+        Animator anim=go.GetComponent<Animator>();
+        go.tag=Tag.INTERACTABLE;
+        if(anim!=null)
+        {
+            anim.enabled=false;
+        }
+        PickableObject po = go.AddComponent<PickableObject>();//挂载PickableObject脚本，后续通过接触对象是否挂载该脚本来实现拾取功能
+        po.itemSO=item;//记录这个捡起的物品类型
+
+        Collider collider=go.GetComponent<Collider>();
+        if(collider!=null)
+        {
+            collider.enabled=true;
+            collider.isTrigger=false;
+        }
+
+        Rigidbody rb=go.GetComponent<Rigidbody>();
+        if(rb!=null)
+        {
+            rb.isKinematic=false;
+            rb.useGravity=true;
         }
     }
 }
