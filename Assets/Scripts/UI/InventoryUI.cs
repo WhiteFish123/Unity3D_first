@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour
     public GameObject itemPrefab;
     private bool isShow=false;
 
+    public ItemDetailUI itemDetailUI;
     void Awake()
     {
         if(Instance!=null&&Instance!=this)
@@ -58,6 +59,7 @@ public class InventoryUI : MonoBehaviour
     }
     public void OnItemClick(ItemSO itemSO)
     {
-        
+        Debug.Log($"[InventoryUI] OnItemClick 收到: {itemSO.itemName}, itemDetailUI={itemDetailUI != null}");
+        itemDetailUI.UpdateItemDetailUI(itemSO);
     }
 }

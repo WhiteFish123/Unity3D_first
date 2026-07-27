@@ -16,8 +16,8 @@ MonoBehaviour:
   itemName: "\u8FF7\u5E7B\u8611\u83C7"
   itemType: 1
   description: "\u9A6C\u91CC\u5965\u7684\u8611\u83C7\uFF0C\u4F46\u662F\u4E0D\u4F1A\u53D8\u5927"
-  itemProperties:
-  - propertyName: 2
+  propertyList:
+  - propertyType: 1
     propertyValue: 20
   itemIcon: {fileID: 21300000, guid: 608ff3c268fe99948ba645c25ab17c27, type: 3}
   itemPrefab: {fileID: 4353505477382106295, guid: ff337581e4450da418df833a15233a84, type: 3}

@@ -8,7 +8,7 @@ public class ItemSO : ScriptableObject
     public string itemName;
     public ItemType itemType;
     public string description;
-    public List<ItemProperty> itemProperties;
+    public List<ItemProperty> propertyList;
     public Sprite itemIcon;
     public GameObject itemPrefab;
 }
@@ -20,7 +20,7 @@ public enum ItemType
 [Serializable]
 public class ItemProperty
 {
-    public ItemPropertyType propertyName;
+    public ItemPropertyType propertyType;
     public int propertyValue;
 }
 public enum ItemPropertyType

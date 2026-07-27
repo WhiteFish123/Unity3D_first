@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 100
-  restTime: 2
+  restTime: 20
 --- !u!195 &4610463800366914039
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class ItemUI : MonoBehaviour
     public TextMeshProUGUI NameText;
     public TextMeshProUGUI TypeText;
 
-    private ItemSO itemSO;
+    public ItemSO itemSO;
     public void initItem(ItemSO itemSO)
     {
         string type="";
@@ -31,6 +31,7 @@ public class ItemUI : MonoBehaviour
 
     public void OnClick()
     {
+        Debug.Log($"[ItemUI] 点击了物品: {itemSO.itemName}, itemSO={itemSO != null}");
         InventoryUI.Instance.OnItemClick(itemSO);
     }
 }
