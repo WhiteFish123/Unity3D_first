@@ -7,7 +7,8 @@ public class InventoryUI : MonoBehaviour
     private GameObject uiGameObject;
     private GameObject content;
     public GameObject itemPrefab;
-    
+    private bool isShow=false;
+
     void Awake()
     {
         if(Instance!=null&&Instance!=this)
@@ -20,7 +21,24 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         uiGameObject = transform.Find("UI").gameObject;
-        content = transform.Find("UI/ListBg/Scroll View/Viewport/Content").gameObject;
+        content = transform.Find("UI/List_Bg/Scroll View/Viewport/Content").gameObject;
+        Hide();
+    }
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            if(isShow)
+            {
+                Hide();
+                isShow=false;
+            }
+            else
+            {
+                Show();
+                isShow=true;
+            }
+        }
     }
     void Show()
     {
@@ -30,7 +48,7 @@ public class InventoryUI : MonoBehaviour
     {
         uiGameObject.SetActive(false);
     }
-    private void AddItem(ItemSO itemSO)
+    public void AddItem(ItemSO itemSO)
     {
         GameObject itemGO = GameObject.Instantiate(itemPrefab);
         itemGO.transform.SetParent(content.transform);
