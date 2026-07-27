@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,10 +8,29 @@ public class ItemUI : MonoBehaviour
     public Image IconImage;
     public TextMeshProUGUI NameText;
     public TextMeshProUGUI TypeText;
-    public void initItem(Sprite icon,string name,string type)
+
+    private ItemSO itemSO;
+    public void initItem(ItemSO itemSO)
     {
-        IconImage.sprite = icon;
-        NameText.text = name;
+        string type="";
+        switch(itemSO.itemType)
+        {
+            case ItemType.Weapon:
+            type="武器";
+            break;
+
+            case ItemType.Consumable:
+            type="可消耗品";
+            break;
+        }
+        IconImage.sprite = itemSO.itemIcon;
+        NameText.text = itemSO.itemName;
         TypeText.text = type;
+        this.itemSO=itemSO;
+    }
+
+    public void OnClick()
+    {
+        InventoryUI.Instance.OnItemClick(itemSO);
     }
 }

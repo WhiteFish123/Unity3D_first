@@ -53,18 +53,11 @@ public class InventoryUI : MonoBehaviour
         GameObject itemGO = GameObject.Instantiate(itemPrefab);
         itemGO.transform.SetParent(content.transform);
         ItemUI itemUI=itemGO.GetComponent<ItemUI>();
-        string type="";
-        switch(itemSO.itemType)
-        {
-            case ItemType.Weapon:
-            type="武器";
-            break;
-
-            case ItemType.Consumable:
-            type="可消耗品";
-            break;
-        }
-        itemUI.initItem(itemSO.itemIcon,itemSO.itemName,type);
+        
+        itemUI.initItem(itemSO);
     }
-    
+    public void OnItemClick(ItemSO itemSO)
+    {
+        
+    }
 }
