@@ -3,7 +3,11 @@ using System.Collections.Generic;
 public class PlayerProperty : MonoBehaviour
 {
     public Dictionary<PropertyType,List<Property>> propertyList;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int hpValue=100;
+    public int energyValue=100;
+    public int mentalValue=100;
+
+    
     void Start()
     {
         propertyList=new Dictionary<PropertyType,List<Property>>();
@@ -13,21 +17,50 @@ public class PlayerProperty : MonoBehaviour
         propertyList.Add(PropertyType.SpeedValue,new List<Property>());
         propertyList.Add(PropertyType.AttackValue,new List<Property>());
 
-        AddProperty(PropertyType.HPValue,100);
-        AddProperty(PropertyType.EnergyValue,100);
-        AddProperty(PropertyType.MentalValue,100);
-        
+        AddProperty(PropertyType.SpeedValue,5);
+        AddProperty(PropertyType.AttackValue,20);
+    }
 
+    public void UseDrug(ItemSO itemSO)
+    {
+        foreach(Property p in itemSO.propertyList)
+        {
+            AddProperty(p.propertyType,p.propertyValue);
+        }
     }
 
     void AddProperty(PropertyType pt,int value)
-    {
+    {   
+        switch(pt)
+        {
+            case PropertyType.HPValue:
+            hpValue+=value;
+            return;
+            case PropertyType.EnergyValue:
+            energyValue+=value;
+            return;
+            case PropertyType.MentalValue:
+            mentalValue+=value;
+            return;
+        }
         List<Property> list;
         propertyList.TryGetValue(pt,out list);
         list.Add(new Property(pt,value));
     }
     void RemoveProperty(PropertyType pt,int value)
     {
+        switch(pt)
+        {
+            case PropertyType.HPValue:
+            hpValue-=value;
+            return;
+            case PropertyType.EnergyValue:
+            energyValue-=value;
+            return;
+            case PropertyType.MentalValue:
+            mentalValue-=value;
+            return;
+        }
         List<Property> list;
         propertyList.TryGetValue(pt,out list);
 
