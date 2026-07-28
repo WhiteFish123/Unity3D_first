@@ -18,7 +18,7 @@ public class JavelinBullet : MonoBehaviour
             return;
         }
         
-        rb.linearVelocity = Vector3.zero;
+        //rb.linearVelocity = Vector3.zero;
         rb.isKinematic = true;
         col.enabled = false;
 
