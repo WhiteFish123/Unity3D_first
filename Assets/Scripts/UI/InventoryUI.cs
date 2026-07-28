@@ -68,5 +68,6 @@ public class InventoryUI : MonoBehaviour
         InventoryManager.Instance.RemoveItem(itemSO);//从InventoryManager中移除该物品
 
         //TODO: 根据类型实现物品使用逻辑
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UseItem(itemSO);
     }
 }
