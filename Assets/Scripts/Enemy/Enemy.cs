@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     private EnemyState childState=EnemyState.IdleState;
     private NavMeshAgent agent;
     public int HP=100;
+    public int exp=20;
     public float restTime=2;
     private float restTimer=0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -60,15 +61,20 @@ public class Enemy : MonoBehaviour
         HP-=damage;
         if(HP<=0)
         {
-            GetComponent<Collider>().enabled=false;
-            int count=Random.Range(2,4);
-            for(int i=0;i<count;i++)
-            {
-                SpawnPickableItem();
-            }
-
-            Destroy(this.gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        GetComponent<Collider>().enabled=false;
+        int count=Random.Range(2,4);
+        for(int i=0;i<count;i++)
+        {
+            SpawnPickableItem();
+        }
+        EventCenter.EnemyDied(this);
+        Destroy(this.gameObject);
     }
     private void SpawnPickableItem()
     {
