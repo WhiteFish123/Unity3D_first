@@ -10,14 +10,20 @@ public class ItemDetailUI : MonoBehaviour
     public TextMeshProUGUI descriptionText;
     public GameObject propertyGrid;
     public GameObject propertyTemplate;
-
+    private ItemSO itemSO;
+    private ItemUI itemUI;
     private void Start()
     {
         propertyTemplate.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 
-    public void UpdateItemDetailUI(ItemSO itemSO)
+    public void UpdateItemDetailUI(ItemSO itemSO,ItemUI itemUI)
     {
+        this.itemSO=itemSO;
+        this.itemUI=itemUI;
+        this.gameObject.SetActive(true);
+
         Debug.Log($"[ItemDetailUI] UpdateItemDetailUI 被调用: {itemSO.itemName}");
         Debug.Log($"[ItemDetailUI] propertyGrid={propertyGrid != null}, propertyTemplate={propertyTemplate != null}");
         Debug.Log($"[ItemDetailUI] propertyList.Count={itemSO.propertyList.Count}");
@@ -85,6 +91,11 @@ public class ItemDetailUI : MonoBehaviour
                 text.text = propertyStr;
             }
         }
-    }
 
+    }
+    public void OnUsebuttonClick()
+    {
+        InventoryUI.Instance.OnItemUse(itemSO,itemUI);
+        this.gameObject.SetActive(false);
+    }
 }

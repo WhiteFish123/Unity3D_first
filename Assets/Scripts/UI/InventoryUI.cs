@@ -57,9 +57,16 @@ public class InventoryUI : MonoBehaviour
         
         itemUI.initItem(itemSO);
     }
-    public void OnItemClick(ItemSO itemSO)
+    public void OnItemClick(ItemSO itemSO,ItemUI itemUI)
     {
         Debug.Log($"[InventoryUI] OnItemClick 收到: {itemSO.itemName}, itemDetailUI={itemDetailUI != null}");
-        itemDetailUI.UpdateItemDetailUI(itemSO);
+        itemDetailUI.UpdateItemDetailUI(itemSO,itemUI);
+    }
+    public void OnItemUse(ItemSO itemSO,ItemUI itemUI)
+    {
+        Destroy(itemUI.gameObject);//销毁该UI
+        InventoryManager.Instance.RemoveItem(itemSO);//从InventoryManager中移除该物品
+
+        //TODO: 根据类型实现物品使用逻辑
     }
 }
