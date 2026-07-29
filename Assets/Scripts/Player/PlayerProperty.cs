@@ -6,6 +6,8 @@ public class PlayerProperty : MonoBehaviour
     public int hpValue=100;
     public int energyValue=100;
     public int mentalValue=100;
+    public int level=1;
+    public int currentExp=0;
 
     
     void Start()
@@ -19,6 +21,8 @@ public class PlayerProperty : MonoBehaviour
 
         AddProperty(PropertyType.SpeedValue,5);
         AddProperty(PropertyType.AttackValue,20);
+
+        EventCenter.OnEnemyDied+=OnEnemyDied;
     }
 
     public void UseDrug(ItemSO itemSO)
@@ -65,5 +69,14 @@ public class PlayerProperty : MonoBehaviour
         propertyList.TryGetValue(pt,out list);
 
         list.Remove(list.Find(x=>x.propertyValue==value));
+    }
+    public void OnEnemyDied(Enemy enemy)
+    {
+        this.currentExp+=enemy.exp;
+        if(currentExp>=level*30)
+        {
+            currentExp-=level*30;
+            level++;
+        }
     }
 }
