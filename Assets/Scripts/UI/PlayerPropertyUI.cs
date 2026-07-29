@@ -5,6 +5,8 @@ public class PlayerPropertyUI : MonoBehaviour
 {
     public static PlayerPropertyUI Instance{get;private set;}
 
+    private GameObject uiGameObject;
+
     private Image hpProgressBar;
     private TextMeshProUGUI hpText;
 
@@ -14,6 +16,9 @@ public class PlayerPropertyUI : MonoBehaviour
     private GameObject propertyGrid;
     private GameObject propertyTemplate;
     private Image weaponIcon;
+
+    private PlayerProperty pp;
+    private PlayerAttack pa;
     void Awake()
     {
         if(Instance!=null&&Instance!=this)
@@ -26,6 +31,7 @@ public class PlayerPropertyUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        uiGameObject=transform.Find("UI").gameObject;
         hpProgressBar=transform.Find("UI/HPProgressBar/ProgressBar").GetComponent<Image>();
         hpText=transform.Find("UI/HPProgressBar/Hp_Number").GetComponent<TextMeshProUGUI>();
         levelProgressBar=transform.Find("UI/LevelProgressBar/ProgressBar").GetComponent<Image>();
@@ -33,20 +39,36 @@ public class PlayerPropertyUI : MonoBehaviour
         propertyGrid=transform.Find("UI/Property_Grid").gameObject;
         propertyTemplate=transform.Find("UI/Property_Grid/Property_Template").gameObject;
         weaponIcon=transform.Find("UI/Weapon_Icon").GetComponent<Image>();
+
         propertyTemplate.SetActive(false);
+
+        GameObject player=GameObject.FindGameObjectWithTag(Tag.PLAYER);
+        pp=player.GetComponent<PlayerProperty>();
+        pa=player.GetComponent<PlayerAttack>();
+        UpdatePlayerPropertyUI();
+        Hide();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            if(uiGameObject.activeSelf)
+            {
+                Hide();
+            }
+            else
+            {
+                Show();
+            }
+        }
     }
 
-    public void UpdatePlayerPropertyUI(PlayerProperty pp,PlayerAttack pa)
+    public void UpdatePlayerPropertyUI()
     {
         hpProgressBar.fillAmount=pp.hpValue/100f;
         hpText.text=pp.hpValue + "/100";
-        levelProgressBar.fillAmount=pp.level*1.0f /pp.level;
+        levelProgressBar.fillAmount=pp.currentExp*1.0f /(pp.level*30);
         levelText.text=pp.level.ToString();
 
         ClearGrid();
@@ -108,5 +130,13 @@ public class PlayerPropertyUI : MonoBehaviour
         go.SetActive(true);
         go.transform.parent=propertyGrid.transform;
         go.transform.Find("Property").GetComponent<TextMeshProUGUI>().text=propertyStr;
+    }
+    private void Show()
+    {
+        uiGameObject.SetActive(true);
+    }
+    private void Hide()
+    {
+        uiGameObject.SetActive(false);
     }
 }

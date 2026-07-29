@@ -42,6 +42,7 @@ public class PlayerAttack : MonoBehaviour
         weaponGo.transform.localRotation=Quaternion.identity;
         this.weapon=weaponGo.GetComponent<Weapon>();
         this.weaponIcon=itemSO.itemIcon;
+        PlayerPropertyUI.Instance.UpdatePlayerPropertyUI();
     }
     public void UnloadWeapon()
     {
