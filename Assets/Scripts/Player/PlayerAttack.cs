@@ -3,6 +3,7 @@ using System.Collections.Generic;
 public class PlayerAttack : MonoBehaviour
 {
     public Weapon weapon;
+    public Sprite weaponIcon;
     
     void Start()
     {
@@ -40,7 +41,7 @@ public class PlayerAttack : MonoBehaviour
         weaponGo.transform.localPosition=Vector3.zero;
         weaponGo.transform.localRotation=Quaternion.identity;
         this.weapon=weaponGo.GetComponent<Weapon>();
-
+        this.weaponIcon=itemSO.itemIcon;
     }
     public void UnloadWeapon()
     {

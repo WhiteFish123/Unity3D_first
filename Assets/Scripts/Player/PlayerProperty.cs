@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public class PlayerProperty : MonoBehaviour
 {
-    public Dictionary<PropertyType,List<Property>> propertyList;
+    public Dictionary<PropertyType,List<Property>> propertyDict;
     public int hpValue=100;
     public int energyValue=100;
     public int mentalValue=100;
@@ -12,12 +12,12 @@ public class PlayerProperty : MonoBehaviour
     
     void Start()
     {
-        propertyList=new Dictionary<PropertyType,List<Property>>();
-        propertyList.Add(PropertyType.HPValue,new List<Property>());
-        propertyList.Add(PropertyType.EnergyValue,new List<Property>());
-        propertyList.Add(PropertyType.MentalValue,new List<Property>());
-        propertyList.Add(PropertyType.SpeedValue,new List<Property>());
-        propertyList.Add(PropertyType.AttackValue,new List<Property>());
+        propertyDict=new Dictionary<PropertyType,List<Property>>();
+        propertyDict.Add(PropertyType.HPValue,new List<Property>());
+        propertyDict.Add(PropertyType.EnergyValue,new List<Property>());
+        propertyDict.Add(PropertyType.MentalValue,new List<Property>());
+        propertyDict.Add(PropertyType.SpeedValue,new List<Property>());
+        propertyDict.Add(PropertyType.AttackValue,new List<Property>());
 
         AddProperty(PropertyType.SpeedValue,5);
         AddProperty(PropertyType.AttackValue,20);
@@ -48,7 +48,7 @@ public class PlayerProperty : MonoBehaviour
             return;
         }
         List<Property> list;
-        propertyList.TryGetValue(pt,out list);
+        propertyDict.TryGetValue(pt,out list);
         list.Add(new Property(pt,value));
     }
     void RemoveProperty(PropertyType pt,int value)
@@ -66,7 +66,7 @@ public class PlayerProperty : MonoBehaviour
             return;
         }
         List<Property> list;
-        propertyList.TryGetValue(pt,out list);
+        propertyDict.TryGetValue(pt,out list);
 
         list.Remove(list.Find(x=>x.propertyValue==value));
     }
