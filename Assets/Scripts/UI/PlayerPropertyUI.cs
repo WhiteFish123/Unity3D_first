@@ -128,7 +128,7 @@ public class PlayerPropertyUI : MonoBehaviour
     {
         GameObject go = GameObject.Instantiate(propertyTemplate);
         go.SetActive(true);
-        go.transform.parent=propertyGrid.transform;
+        go.transform.SetParent(propertyGrid.transform);
         go.transform.Find("Property").GetComponent<TextMeshProUGUI>().text=propertyStr;
     }
     private void Show()

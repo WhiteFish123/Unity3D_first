@@ -22,7 +22,7 @@ public class JavelinBullet : MonoBehaviour
         rb.isKinematic = true;
         col.enabled = false;
 
-        transform.parent=collision.gameObject.transform;
+        transform.SetParent(collision.gameObject.transform);
         Destroy(this.gameObject, 2f);
 
         if(collision.gameObject.CompareTag(Tag.ENEMY))

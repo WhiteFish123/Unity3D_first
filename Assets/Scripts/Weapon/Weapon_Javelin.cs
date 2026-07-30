@@ -44,7 +44,7 @@ public class Weapon_Javelin :Weapon
 
             rb.constraints = ~RigidbodyConstraints.FreezeAll;
             bulletGo.GetComponent<Collider>().enabled=true;
-            bulletGo.transform.parent=null;
+            bulletGo.transform.SetParent(null);
             Destroy(this.gameObject);
         }
     }

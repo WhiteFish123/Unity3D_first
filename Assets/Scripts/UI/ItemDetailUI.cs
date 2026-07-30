@@ -83,7 +83,7 @@ public class ItemDetailUI : MonoBehaviour
             propertyStr+=property.propertyValue;
             GameObject go = GameObject.Instantiate(propertyTemplate);
             go.SetActive(true);
-            go.transform.parent=propertyGrid.transform;
+            go.transform.SetParent(propertyGrid.transform);
             TextMeshProUGUI text = go.transform.GetComponentInChildren<TextMeshProUGUI>();
             //Debug.Log($"[ItemDetailUI] 生成属性: {propertyStr}, text={text != null}");
             if(text != null)
