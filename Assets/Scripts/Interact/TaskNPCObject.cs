@@ -43,12 +43,14 @@ public class TaskNPCObject : InteractableObject
             case GameTaskState.Waiting:
                 gameTaskSO.Start();
                 InventoryManager.Instance.AddItem(gameTaskSO.startReward);
+                MessageUI.Instance.Show("你有了一个任务");
                 break;
             case GameTaskState.Executing:
                 break;
             case GameTaskState.Completed:
                 gameTaskSO.End();
                 InventoryManager.Instance.AddItem(gameTaskSO.endReward);
+                MessageUI.Instance.Show("任务已完成!");
                 break;
             case GameTaskState.End:
                 break;

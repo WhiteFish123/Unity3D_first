@@ -31,7 +31,7 @@ public class ItemUI : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log($"[ItemUI] 点击了物品: {itemSO.itemName}, itemSO={itemSO != null}");
+        //Debug.Log($"[ItemUI] 点击了物品: {itemSO.itemName}, itemSO={itemSO != null}");
         InventoryUI.Instance.OnItemClick(itemSO,this);
     }
 }

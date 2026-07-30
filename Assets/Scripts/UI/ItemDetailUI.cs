@@ -24,9 +24,9 @@ public class ItemDetailUI : MonoBehaviour
         this.itemUI=itemUI;
         this.gameObject.SetActive(true);
 
-        Debug.Log($"[ItemDetailUI] UpdateItemDetailUI 被调用: {itemSO.itemName}");
-        Debug.Log($"[ItemDetailUI] propertyGrid={propertyGrid != null}, propertyTemplate={propertyTemplate != null}");
-        Debug.Log($"[ItemDetailUI] propertyList.Count={itemSO.propertyList.Count}");
+        //Debug.Log($"[ItemDetailUI] UpdateItemDetailUI 被调用: {itemSO.itemName}");
+        //Debug.Log($"[ItemDetailUI] propertyGrid={propertyGrid != null}, propertyTemplate={propertyTemplate != null}");
+        //Debug.Log($"[ItemDetailUI] propertyList.Count={itemSO.propertyList.Count}");
 
         string type="";
         switch(itemSO.itemType)
@@ -85,7 +85,7 @@ public class ItemDetailUI : MonoBehaviour
             go.SetActive(true);
             go.transform.parent=propertyGrid.transform;
             TextMeshProUGUI text = go.transform.GetComponentInChildren<TextMeshProUGUI>();
-            Debug.Log($"[ItemDetailUI] 生成属性: {propertyStr}, text={text != null}");
+            //Debug.Log($"[ItemDetailUI] 生成属性: {propertyStr}, text={text != null}");
             if(text != null)
             {
                 text.text = propertyStr;

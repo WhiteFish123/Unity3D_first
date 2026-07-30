@@ -22,7 +22,7 @@ public class InteractableObject : MonoBehaviour
     
     protected virtual void Interact()
     {
-        Debug.Log("Interacting with " + gameObject.name);
+        //Debug.Log("Interacting with " + gameObject.name);
     }
     private IEnumerator MoveToObjectCo()
     {
@@ -32,7 +32,7 @@ public class InteractableObject : MonoBehaviour
         playerAgent.stoppingDistance=2;
         if (!playerAgent.SetDestination(transform.position))//设置目的地的同时检查是否可达
         {
-            Debug.LogWarning("Destination unreachable");
+            //Debug.LogWarning("Destination unreachable");
             yield break;
         }
 
