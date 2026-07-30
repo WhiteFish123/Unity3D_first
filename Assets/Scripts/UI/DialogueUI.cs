@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 public class DialogueUI : MonoBehaviour
 {
     public static DialogueUI Instance{ get; private set; }
@@ -11,6 +12,7 @@ public class DialogueUI : MonoBehaviour
     private int dialogueIndex=0;
     private GameObject uiGameObject;
     public List<string>contentList;
+    private Action OnDialogueEnd;
     void Awake()
     {
         if(Instance!=null && Instance!=this)
@@ -40,7 +42,7 @@ public class DialogueUI : MonoBehaviour
     {
         uiGameObject.SetActive(true);
     }
-    public void Show(string name,List<string>content)
+    public void Show(string name,List<string>content,Action OnDialogueEnd=null)
     {
         nameText.text=name;
         contentList=new List<string>();//清空之前的内容
@@ -48,7 +50,7 @@ public class DialogueUI : MonoBehaviour
         contentList.AddRange(content);//添加新的内容
         contentText.text=contentList[0];//显示第一条内容
         Show();
-
+        this.OnDialogueEnd=OnDialogueEnd;
     }
     private void Hide()
     {
@@ -59,6 +61,7 @@ public class DialogueUI : MonoBehaviour
         dialogueIndex++;
         if(dialogueIndex>=contentList.Count)
         {
+            OnDialogueEnd?.Invoke();
             Hide();
             return;
         }
